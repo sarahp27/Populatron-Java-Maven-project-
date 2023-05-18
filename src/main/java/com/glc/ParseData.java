@@ -14,13 +14,22 @@ public class ParseData{
     //     //         .skip(1) 
     //     //         .map(line -> line.split(","))
     //     //         .map(parts -> parts[4])
-    //     //         .collect(Collectors.toList());
+    //     //         .collect(Collelctors.toList());
 
     //     totalPopulation = sum(data);     
     // }
 
+    public ParseData(List<String> testPopData) {
+    }
+
+
     public List<String> getPopData() {
         return popText;
+    }
+
+
+    public int sum(List<String> popData) {
+        return 0;
     }
   
 
