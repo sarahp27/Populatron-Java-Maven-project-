@@ -25,10 +25,10 @@ public class ParseData{
         return popText;
     }
 
-
-    // public int sum(List<String> popData) {
-    //     return 0;
-    // }
+    @overload
+    public int sum(List<String> popData) {
+        return 0;
+    }
   
 
     // calculate sum of pop

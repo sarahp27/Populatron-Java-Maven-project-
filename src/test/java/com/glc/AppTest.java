@@ -4,8 +4,10 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -62,14 +64,20 @@ public class AppTest
      * 
      */
     @Test
-    public void testCsvFileNotFound() {
-        String csvFilePath = "path/to/worldcitiespop.csv";
-        try (Scanner scanner = new Scanner(new File(csvFilePath))) {
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine(); 
-            }
+    public void testReadCSVFile() {
+        String filePath = "path/to/your/csv/file.csv";
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            // Read the CSV file here
+            // ...
+
+            // If the file is successfully read, perform necessary assertions or actions
+            // ...
+
         } catch (FileNotFoundException e) {
-            fail("File not found: " + csvFilePath);
+            fail("CSV file not found: " + filePath);
+        } catch (IOException e) {
+            fail("Error reading CSV file: " + e.getMessage());
         }
     }
 }
