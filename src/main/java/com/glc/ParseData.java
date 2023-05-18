@@ -7,6 +7,7 @@ public class ParseData{
 
     private List<String> popText;
     private int totalPopulation;
+    
 
     // public ParseData(List<String> data) {
     //     // popText = data.stream()
