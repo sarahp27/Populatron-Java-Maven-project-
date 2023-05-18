@@ -2,13 +2,17 @@ package com.glc;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
 import org.junit.Test;
 
@@ -54,15 +58,18 @@ public class AppTest
         assertEquals(expected.getPopData(), actual.getPopData());
     }
 
+    /**
+     * 
+     */
     @Test
-    public void checkCsv(){
-        String fileNotExists = "notExistant_population_data.csv";
-        assertThrows(IOException.class, () -> {
-            List<String> testPopData = Files.readAllLines(Paths.get(fileNotExists), StandardCharsets.ISO_8859_1);
-
-        });
-
-
+    public void testCsvFileNotFound() {
+        String csvFilePath = "path/to/worldcitiespop.csv";
+        try (Scanner scanner = new Scanner(new File(csvFilePath))) {
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine(); 
+            }
+        } catch (FileNotFoundException e) {
+            fail("File not found: " + csvFilePath);
+        }
     }
-
 }
